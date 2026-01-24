@@ -1,0 +1,15 @@
+node_modules
+dist
+build
+coverage
+
+.env
+package-lock.json
+
+public/**/*.js
+
+*.log
+*.tmp
+*.bak
+
+src/utils/legacyCode.js
