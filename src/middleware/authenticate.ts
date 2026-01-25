@@ -1,11 +1,11 @@
 import dotenv from 'dotenv';
 import { JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { ErrTokenInvalid } from '../config/error';
+import { ErrTokenInvalid } from '../core/error';
 
 dotenv.config();
 
-const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const authHeader = req.headers['authorization'];
     if (!authHeader || typeof authHeader !== 'string') {
@@ -32,4 +32,4 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
-export default authMiddleware;
+export default authenticate;

@@ -1,19 +1,21 @@
-import mongoose from 'mongoose';
-import { config } from './config';
+import mysql from "mysql2/promise";
+import Logger from "./logger";
+import { config } from "./config";
 
-const connectMongo = async (): Promise<void> => {
+export const mysqlPool = mysql.createPool({
+  uri: config.db.uri,
+  connectionLimit: 10,
+});
+
+const connectMySQL = async () => {
   try {
-    await mongoose.connect(
-      config.db.uri as string,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      } as mongoose.ConnectOptions
-    );
-    console.error('Connected to MongoDB');
+    await mysqlPool.getConnection();
+    Logger.info("MySQL connected successfully");
   } catch (err) {
-    console.error('Failed to connect to MongoDB', err);
+    Logger.error("MySQL connection failed");
+    console.error(err);
+    process.exit(1);
   }
 };
 
-export default connectMongo;
+export default connectMySQL;
