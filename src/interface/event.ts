@@ -14,7 +14,7 @@ export interface AttendanceLogReceivedEvent {
   };
 
   attendance: {
-    date: string;        // 2025-11-19
+    date: Date;        // 2025-11-19
     checkedTime: string; // 08:48
   };
 

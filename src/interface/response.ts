@@ -13,3 +13,16 @@ export interface PaginatedResponse<T = any>{
   success: boolean;
   message: string;
 }
+
+export interface AttendanceFixResponse {
+  id: number;
+  employeeId: number;
+  workDate: string;
+  reason?: string;
+
+  status: 'PENDING' | 'APPROVED' | 'REJECTED';
+
+  requestedAt: string;
+  approvedAt?: string;
+  approvedBy?: number;
+}

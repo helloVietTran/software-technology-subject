@@ -1,4 +1,4 @@
-import { NextFunction, Response, Request } from 'express';
+import { Request } from 'express';
 
 interface AttendanceLogBody {
   employeeId: number;
@@ -13,4 +13,14 @@ interface AttendanceLogBody {
   source?: string;
 }
 
+interface AttendanceFixBody {
+    /**
+     * Ngày bị lỗi chấm công (YYYY-MM-DD)
+     */
+    workDate: string;
+    reason?: string;
+}
+
+
 export type AttendanceLogRequest = Request<{}, {}, AttendanceLogBody>
+export type AttendanceFixRequest = Request<{}, {}, AttendanceFixBody>

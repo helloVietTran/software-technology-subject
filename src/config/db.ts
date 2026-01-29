@@ -1,5 +1,5 @@
 import mysql from "mysql2/promise";
-import Logger from "./logger";
+import Logger from "../common/logger";
 import { config } from "./config";
 
 export const mysqlPool = mysql.createPool({
@@ -10,7 +10,7 @@ export const mysqlPool = mysql.createPool({
 const connectMySQL = async () => {
   try {
     await mysqlPool.getConnection();
-    Logger.info("MySQL connected successfully");
+    console.log("MySQL connected successfully");
   } catch (err) {
     Logger.error("MySQL connection failed");
     console.error(err);

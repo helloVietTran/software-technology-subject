@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { ErrTokenInvalid } from '../core/error';
+import { ErrTokenInvalid } from '../common/app-error';
 
 dotenv.config();
 

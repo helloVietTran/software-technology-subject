@@ -3,24 +3,23 @@ import morgan from 'morgan';
 import { errors } from 'celebrate';
 import cors from 'cors';
 import helmet from 'helmet';
-import compression from "compression";
+import compression from 'compression';
+import cron from 'node-cron';
 
 import route from './route';
 import connectMySQL from './config/db';
-import { createTopicIfNotExists, initKafkaProducer } from './config/kafka';
-import { responseErr } from './core/error';
+import { responseErr } from './common/app-error';
 import { config } from './config/config';
-
+import { bootstrapKafka } from './message-queue/bootstrapKafka';
+import attendanceService from './service/attendance-service';
 
 const app = express();
 
-// Kết nối Database
+// Kết nối Database + kafka
 connectMySQL();
-initKafkaProducer();
-createTopicIfNotExists();
+bootstrapKafka();
 
 // Middlewares
-// app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 // app.use(morgan('combined'));
 app.use(morgan('dev'));
 app.use(express.json());
@@ -45,4 +44,14 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   responseErr(err, res);
 });
 
+// cron job
+// thống kê chấm công hàng ngày vào mỗi 30 phút
+cron.schedule('*/30 * * * *', async () => {
+  try {
+    await attendanceService.runDailyAttendanceStatistics();
+  } catch (err) {
+    console.error('[CRON] Attendance statistic error', err);
+  }
+});
+attendanceService.runDailyAttendanceStatistics();
 export default app;

@@ -1,47 +1,53 @@
 import { NextFunction, Response, Request } from 'express';
-import crypto from 'crypto';
 
-import { AttendanceLogRequest } from '../interface/request';
-import { kafkaProducer } from '../config/kafka';
-import { CREATED } from '../core/success-response';
+import { AttendanceFixRequest, AttendanceLogRequest } from '../interface/request';
+import { CREATED, OK } from '../common/success-response';
+import attendanceService from '../service/attendance-service';
 
 class AttendanceController {
   async ingestAttendanceLog(req: AttendanceLogRequest, res: Response, next: NextFunction) {
-    const { employeeId, employeeName, email, workStart, workEnd, logDate, checkedTime, source } = req.body;
-    const eventId = crypto.randomUUID();
-    const event = {
-      eventId,
-      eventType: 'ATTENDANCE_LOG_RECEIVED',
-      employee: {
-        id: employeeId,
-        name: employeeName,
-        email
-      },
-      workShift: {
-        start: workStart,
-        end: workEnd
-      },
-      attendance: {
-        date: logDate,
-        checkedTime
-      },
-      source,
-      createdAt: new Date().toISOString()
-    };
-
-    await kafkaProducer.send({
-      topic: 'attendance.log.received',
-      messages: [
-        {
-          key: String(employeeId),
-          value: JSON.stringify(event)
-        }
-      ]
-    });
+    const result = await attendanceService.ingestAttendanceLog(req.body);
 
     new CREATED({
-      message: 'Attendance log has been sent to processing queue',
-      metadata: { eventId }
+      metadata: result
+    }).send(res);
+  }
+
+  async getMonthlyAttendance(req: Request, res: Response, next: NextFunction) {
+    const empId = Number(req.query.empId);
+    const month = Number(req.query.month);
+
+    const result = await attendanceService.getMonthlyAttendance(empId, month);
+
+    new OK({ metadata: result }).send(res);
+  }
+
+  async requestAttendanceFix(req: AttendanceFixRequest, res: Response, next: NextFunction) {
+    // TODO: get employeeId from auth token
+    const result = await attendanceService.requestAttendanceFix(2, req.body);
+
+    new CREATED({
+      metadata: result
+    }).send(res);
+  }
+  
+  async approveFix(req: Request, res: Response, next: NextFunction) {
+    const fixId = Number(req.params.fixId);
+    // TODO: get employeeId from auth token
+    const result = await attendanceService.approveFix(fixId, 2);
+
+    new OK({
+      metadata: result
+    }).send(res);
+  }
+
+  async rejectFix(req: Request, res: Response, next: NextFunction) {
+    const fixId = Number(req.params.fixId);
+    // TODO: get employeeId from auth token
+    const result = await attendanceService.rejectFix(fixId, 2);
+
+    new OK({
+      metadata: result
     }).send(res);
   }
 }

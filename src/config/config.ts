@@ -29,4 +29,5 @@ export const config = {
 
   fe_domain: process.env.FE_DOMAIN!,
   be_domain: process.env.BE_DOMAIN!,
+  request_fix_per_month: Number(process.env.REQUEST_FIX_PER_MONTH) || 3
 };
