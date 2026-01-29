@@ -8,12 +8,7 @@ function diffMinutes(start: string, end: string, onlyPositive = false): number {
   return onlyPositive ? Math.max(diff, 0) : diff;
 }
 
-function overlapMinutes(
-  start: string,
-  end: string,
-  breakStart = '12:00:00',
-  breakEnd = '13:00:00'
-): number {
+function overlapMinutes(start: string, end: string, breakStart = '12:00:00', breakEnd = '13:00:00'): number {
   const toMin = (t: string) => {
     const [h, m, s] = t.split(':').map(Number);
     return h * 60 + m + (s ? s / 60 : 0);
@@ -27,4 +22,9 @@ function overlapMinutes(
   return Math.max(0, Math.min(e, be) - Math.max(s, bs));
 }
 
-export { diffMinutes, overlapMinutes };
+function isWeekend(date: Date) {
+  const day = date.getDay();
+  return day === 0 || day === 6; // CN hoặc T7
+}
+
+export { diffMinutes, overlapMinutes, isWeekend };

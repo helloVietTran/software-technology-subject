@@ -102,3 +102,18 @@ INSERT INTO attendance_close_calendar (work_year, work_month, close_day) VALUES
 (2026, 10, 20),
 (2026, 11, 20),
 (2026, 12, 22);
+
+-- Bảng lưu lịch làm việc, chỉ lưu ngày nghỉ
+CREATE TABLE working_calendar (
+  id int AUTO_INCREMENT PRIMARY KEY,
+
+  work_date DATE NOT NULL,
+  date_description VARCHAR(255),
+
+  date_type ENUM('HOLIDAY', 'MAKEUP_WORK', 'WEEKEND') NOT NULL,
+
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  UNIQUE KEY uk_work_date (work_date)
+);
+
