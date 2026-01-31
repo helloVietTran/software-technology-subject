@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cấu hình hệ thống</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand"><span>◆</span> HRM TOOL</div>
+        <ul class="menu">
+            <li><a href="index.html"><i>📅</i> Bảng chấm công</a></li>
+            <li><a href="import.html" class="active"><i>⚙️</i> Cấu hình & Import</a></li>
+            <li><a href="salary.html"><i>💰</i> Chốt công & Lương</a></li>
+            <li><a href="report.html"><i>📊</i> Báo cáo</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <header>
+            <h3>Cấu hình & Dữ liệu</h3>
+            <div class="user-box"><span>Admin HR</span><div class="avatar">H</div></div>
+        </header>
+
+        <div class="content">
+            <div class="card-grid">
+                <div class="card">
+                    <h3>📁 Import Lịch & Ngày nghỉ</h3>
+                    <p style="margin-bottom:15px; font-size:0.9rem; color:var(--text-muted)">
+                        Upload file Excel chứa ngày nghỉ lễ hoặc lịch làm việc đặc biệt.
+                    </p>
+                    <div class="form-group">
+                        <input type="file" class="form-control">
+                    </div>
+                    <button class="btn btn-primary">Upload Lịch</button>
+                    <button class="btn btn-outline">Tải file mẫu</button>
+                </div>
+
+                <div class="card">
+                    <h3>🕒 Cấu hình Ca làm việc</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Chọn nhân viên</label>
+                            <select class="form-control">
+                                <option>Nguyễn Văn A - NV001</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Chọn Ca (1 tháng đổi 1 lần)</label>
+                            <select class="form-control">
+                                <option>Ca 1: 08:30 - 17:30</option>
+                                <option>Ca 2: 09:00 - 18:00</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">Lưu cấu hình</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📜 System Logs (Đọc file Excel & Mail)</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thời gian</th>
+                                <th>Loại Log</th>
+                                <th>Nội dung</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>30/01/2026 09:00:05</td>
+                                <td><b>AUTO_IMPORT</b></td>
+                                <td>Đọc file resources/input.xlsx</td>
+                                <td><span class="badge bg-success">Thành công</span></td>
+                            </tr>
+                            <tr>
+                                <td>29/01/2026 18:05:00</td>
+                                <td><b>SEND_MAIL</b></td>
+                                <td>Gửi cảnh báo quên checkout NV002</td>
+                                <td><span class="badge bg-danger">Lỗi (Retry 1/3)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

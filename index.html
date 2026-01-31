@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng Chấm Công</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand"><span>◆</span> HRM TOOL</div>
+        <ul class="menu">
+            <li><a href="index.html" class="active"><i>📅</i> Bảng chấm công</a></li>
+            <li><a href="import.html"><i>⚙️</i> Cấu hình & Import</a></li>
+            <li><a href="salary.html"><i>💰</i> Chốt công & Lương</a></li>
+            <li><a href="report.html"><i>📊</i> Báo cáo</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <header>
+            <h3>Bảng Chấm Công Tháng 01/2026</h3>
+            <div class="user-box"><span>Nguyễn Văn A</span><div class="avatar">A</div></div>
+        </header>
+
+        <div class="content">
+            <div class="card-grid">
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <div class="stat-label">Ngày công thực tế</div>
+                    <div class="stat-val">22.5</div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--warning);">
+                    <div class="stat-label">Số lần đi muộn</div>
+                    <div class="stat-val">2 <span style="font-size:0.8rem; color:var(--text-muted)">/ 3 (Cho phép)</span></div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <div class="stat-label">Quên Check-in/out</div>
+                    <div class="stat-val">1</div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--success);">
+                    <div class="stat-label">OT Tích lũy</div>
+                    <div class="stat-val">4h</div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ngày</th>
+                            <th>Ca làm</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th>Thực tế</th>
+                            <th>OT</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/01/2026 (Thứ 5)</td>
+                            <td>08:30 - 17:30</td>
+                            <td>08:25</td>
+                            <td>17:35</td>
+                            <td>8h</td>
+                            <td>-</td>
+                            <td><span class="badge bg-success">Đủ công</span></td>
+                        </tr>
+                        <tr>
+                            <td>02/01/2026 (Thứ 6)</td>
+                            <td>08:30 - 17:30</td>
+                            <td style="color:var(--danger); font-weight:bold;">08:45</td>
+                            <td>17:30</td>
+                            <td>7h45</td>
+                            <td>-</td>
+                            <td><span class="badge bg-warning">Đi muộn (Được phép)</span></td>
+                        </tr>
+                        <tr>
+                            <td>03/01/2026 (Thứ 7)</td>
+                            <td>Nghỉ</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><span class="badge" style="background:#eee; color:#777">Ngày nghỉ</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

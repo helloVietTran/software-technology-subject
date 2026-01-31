@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chốt công & Lương</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand"><span>◆</span> HRM TOOL</div>
+        <ul class="menu">
+            <li><a href="index.html"><i>📅</i> Bảng chấm công</a></li>
+            <li><a href="import.html"><i>⚙️</i> Cấu hình & Import</a></li>
+            <li><a href="salary.html" class="active"><i>💰</i> Chốt công & Lương</a></li>
+            <li><a href="report.html"><i>📊</i> Báo cáo</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <header>
+            <h3>Thông tin Chốt Công</h3>
+            <div class="user-box"><span>Nguyễn Văn A</span><div class="avatar">A</div></div>
+        </header>
+
+        <div class="content">
+            <div class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                <h3>ℹ️ Thông tin kỳ lương hiện tại</h3>
+                <div style="display: flex; gap: 40px;">
+                    <div>
+                        <div class="stat-label">Ngày chốt công</div>
+                        <div class="stat-val">25/01/2026</div>
+                    </div>
+                    <div>
+                        <div class="stat-label">Công nợ tháng trước (T12)</div>
+                        <div class="stat-val" style="color:var(--danger)">-0.5 công</div>
+                        <small class="text-muted">(Do đi muộn sau ngày 25/12)</small>
+                    </div>
+                    <div>
+                        <div class="stat-label">Tổng công thực nhận</div>
+                        <div class="stat-val" style="color:var(--success)">22.0 công</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>📅 Import Lịch Chốt Công (Admin)</h3>
+                <div style="display:flex; gap:10px; align-items:flex-end;">
+                    <div style="flex:1">
+                        <label style="display:block; margin-bottom:5px;">File Excel Lịch Chốt:</label>
+                        <input type="file" class="form-control">
+                    </div>
+                    <button class="btn btn-primary">Cập nhật ngày chốt</button>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kỳ lương</th>
+                            <th>Ngày chốt</th>
+                            <th>Tổng công</th>
+                            <th>Phạt đi muộn</th>
+                            <th>Công nợ</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tháng 01/2026</td>
+                            <td>25/01/2026</td>
+                            <td>22.0</td>
+                            <td>0</td>
+                            <td>-0.5</td>
+                            <td><span class="badge bg-warning">Chờ xác nhận</span></td>
+                            <td><button class="btn btn-primary" style="padding:4px 8px; font-size:0.8rem">Confirm Mail</button></td>
+                        </tr>
+                        <tr>
+                            <td>Tháng 12/2025</td>
+                            <td>25/12/2025</td>
+                            <td>24.0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><span class="badge bg-success">Đã chốt</span></td>
+                            <td><button class="btn btn-outline" style="padding:4px 8px; font-size:0.8rem">Xem chi tiết</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

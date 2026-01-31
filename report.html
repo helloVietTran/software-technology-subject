@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Báo cáo thống kê</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand"><span>◆</span> HRM TOOL</div>
+        <ul class="menu">
+            <li><a href="index.html"><i>📅</i> Bảng chấm công</a></li>
+            <li><a href="import.html"><i>⚙️</i> Cấu hình & Import</a></li>
+            <li><a href="salary.html"><i>💰</i> Chốt công & Lương</a></li>
+            <li><a href="report.html" class="active"><i>📊</i> Báo cáo</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <header>
+            <h3>Xuất Báo Cáo</h3>
+            <div class="user-box"><span>Admin HR</span><div class="avatar">H</div></div>
+        </header>
+
+        <div class="content">
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>📥 Xuất file Excel Thống kê</h3>
+                <form style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 15px; align-items: end;">
+                    <div class="form-group">
+                        <label>Từ ngày</label>
+                        <input type="date" class="form-control" value="2026-01-01">
+                    </div>
+                    <div class="form-group">
+                        <label>Đến ngày</label>
+                        <input type="date" class="form-control" value="2026-01-31">
+                    </div>
+                    <div class="form-group">
+                        <label>Loại báo cáo</label>
+                        <select class="form-control">
+                            <option>Bảng công chi tiết</option>
+                            <option>Danh sách đi muộn/Về sớm</option>
+                            <option>Tổng hợp OT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">📥 Xuất Excel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>👁️ Xem trước dữ liệu (Tháng 1)</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nhân viên</th>
+                                <th>Tổng giờ làm</th>
+                                <th>Số lần đi muộn</th>
+                                <th>Số lần quên Log</th>
+                                <th>Tổng OT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nguyễn Văn A</td>
+                                <td>176h</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>4h</td>
+                            </tr>
+                            <tr>
+                                <td>Trần Thị B</td>
+                                <td>180h</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0h</td>
+                            </tr>
+                             <tr>
+                                <td>Lê Văn C</td>
+                                <td>160h</td>
+                                <td>5 <span class="badge bg-danger">!</span></td>
+                                <td>2</td>
+                                <td>0h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
